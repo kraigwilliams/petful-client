@@ -1,0 +1,46 @@
+import React, {Component} from '.react';
+import PeopleService from '../services/people-service';
+
+class ChoosePet extends Component{
+
+    componentDidMount(){
+     
+    }
+
+
+state={
+    dogs:[],
+    cats:[],
+    users:[],
+    currentPicker:[],
+    adoptedPet:[],
+
+    mockUser:[]
+
+}
+render(){
+    let currentPicker= this.state.users[i]
+    return(
+
+
+        <div>
+
+            
+            <h2>It's your Turn! Time to Choose a Pet</h2>
+<div className='pets'> 
+<div className='cats'>
+    {this.state.cats.map}
+</div>
+<div className= 'dogs'></div>
+{this.state.dogs.map}
+</div>
+<div className='Adopted Pets'></div>
+
+            </div>
+    )
+}
+
+
+}
+
+export default ChoosePet

@@ -1,0 +1,21 @@
+*{
+    text-align: center;
+}
+
+.pets{
+    display:flex;
+    justify-content: center;
+    /* flex-direction:column; */
+}
+
+.pet-image{
+    width:200px;
+    border:5px solid red;
+}
+
+
+.pet-content{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
