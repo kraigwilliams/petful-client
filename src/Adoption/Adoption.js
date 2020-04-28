@@ -2,13 +2,23 @@ import React, { Component } from "react";
 
 import peopleService from "../services/people-service";
 import petService from "../services/pet-service";
-
+// import { withRouter} from 'react-router';
 class Adoption extends Component {
   state = {
     users: [],
     dogs: [],
     cats:[]
   };
+
+  handleNewUser =(event)=>{
+    event.preventDefault();
+    console.log(event.target.person.value, "what was clicked")
+    const user= event.target.person.value;
+    console.log(this,"this")
+    peopleService.postUser(user)
+    .then(this.props.history.push('/adoption'))
+    
+    }
 
   async componentDidMount() {
     const users = await peopleService.getPeople();
@@ -21,6 +31,12 @@ class Adoption extends Component {
   render() {
     return (
       <div>
+<form onSubmit={event=>this.handleNewUser(event)} name="user" className="submit-name">
+                <input type ="text" name="person" placeholder="Enter Your Name Here"/>
+                <input type= "submit" value="Start Adoption"/>
+                {/* <Link id='start' type='submit' to='/adoption'>Start</Link> */}
+            </form>
+        
         <h2>Adoption Queue</h2>
         <div className="people">
           <ol>

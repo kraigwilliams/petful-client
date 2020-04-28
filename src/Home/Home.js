@@ -1,14 +1,19 @@
-import React ,{Component } from 'react'
-import SearchPets from '../images/searchpets.png'
-
-import {Link} from 'react-router-dom';
+import React ,{Component } from 'react';
+import SearchPets from '../images/searchpets.png';
+import peopleService from '../services/people-service';
+// import {Link} from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 
 class Home extends Component{
 
-handleNewUser(event){
-event.preventDefault()
+handleNewUser =(event)=>{
+event.preventDefault();
 console.log(event.target.person.value, "what was clicked")
+const user= event.target.person.value;
+console.log(this,"this")
+peopleService.postUser(user)
+.then(this.props.history.push('/adoption'))
 
 }
     render(){
@@ -20,7 +25,7 @@ console.log(event.target.person.value, "what was clicked")
                 <span>
                     <img src={SearchPets} alt="search for your new pet"/>
                 </span>
-                <form onSubmit={this.handleNewUser} name="user" className="submit-name">
+                <form onSubmit={event=>this.handleNewUser(event)} name="user" className="submit-name">
                 <input type ="text" name="person" placeholder="Enter Your Name Here"/>
                 <input type= "submit" value="Start Adoption"/>
                 {/* <Link id='start' type='submit' to='/adoption'>Start</Link> */}
